@@ -33,10 +33,10 @@ Designed for **statistical arbitrage** and **mean reversion** in equities 📊.
 └── 📦 Output: Trading Universe for Dynamic β Pairs Trading
 
 ✨ Key Features
-📌 Dynamic Hedge Ratios estimated with a Kalman filter for adaptive trading.
-🔗 Cointegration-based pre-selection to ensure long-term equilibrium relationships.
-📉 Multi-test validation (ADF, KPSS, Hurst exponent) for robust mean-reversion detection.
-🧠 Designed for live trading & backtesting in a statistical arbitrage framework.
+- 📌 Dynamic Hedge Ratios estimated with a Kalman filter for adaptive trading.
+- 🔗 Cointegration-based pre-selection to ensure long-term equilibrium relationships.
+- 📉 Multi-test validation (ADF, KPSS, Hurst exponent) for robust mean-reversion detection.
+- 🧠 Designed for live trading & backtesting in a statistical arbitrage framework.
 
 📚 References
 Engle, R. F., & Granger, C. W. J. (1987). Cointegration and Error Correction: Representation, Estimation, and Testing.
