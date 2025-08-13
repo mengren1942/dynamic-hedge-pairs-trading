@@ -1,4 +1,4 @@
-# 📈 dynamic-hedge-pairs-trading  
+# 📈 dynamic-hedge-pairs-trading
 
 A **quantitative pairs trading strategy** leveraging **dynamic hedge ratios** and **spreads** estimated via **Kalman filtering** 🧮 and **cointegration techniques** 🔗.  
 Designed for **statistical arbitrage** and **mean reversion** in equities 📊.
@@ -7,7 +7,7 @@ Designed for **statistical arbitrage** and **mean reversion** in equities 📊.
 
 ## 🛠️ Workflow Overview
 
-```text
+~~~text
 🚀 Start: Candidate Universe of Securities
 │
 ├── 🧹 Step 1: Pre-filter for Liquidity & Data Quality
@@ -21,7 +21,7 @@ Designed for **statistical arbitrage** and **mean reversion** in equities 📊.
 │       ↳ Reduce universe to plausible relationships
 │
 ├── 📏 Step 4: Apply Kalman Filter to Estimate βₜ (Dynamic Hedge Ratio)
-│       ↳ Model: P1ₜ = αₜ + βₜ P2ₜ + εₜ
+│       ↳ Model: P1ₜ = αₜ + βₜ · P2ₜ + εₜ
 │
 ├── 📉 Step 5: Test Kalman Filter Residuals εₜ for Stationarity
 │       ├── 📊 ADF test
@@ -31,17 +31,21 @@ Designed for **statistical arbitrage** and **mean reversion** in equities 📊.
 ├── 🏁 Step 6: Keep Pairs with Mean-Reverting Dynamic Spread
 │
 └── 📦 Output: Trading Universe for Dynamic β Pairs Trading
+~~~
 
-✨ Key Features
-- 📌 Dynamic Hedge Ratios estimated with a Kalman filter for adaptive trading.
-- 🔗 Cointegration-based pre-selection to ensure long-term equilibrium relationships.
-- 📉 Multi-test validation (ADF, KPSS, Hurst exponent) for robust mean-reversion detection.
-- 🧠 Designed for live trading & backtesting in a statistical arbitrage framework.
+---
 
-📚 References
-Engle, R. F., & Granger, C. W. J. (1987). Cointegration and Error Correction: Representation, Estimation, and Testing.
-Johansen, S. (1991). Estimation and Hypothesis Testing of Cointegration Vectors in Gaussian Vector Autoregressive Models.
-Kalman, R. E. (1960). A New Approach to Linear Filtering and Prediction Problems.
+## ✨ Key Features
 
+- 📌 **Dynamic Hedge Ratios** estimated with a Kalman filter for adaptive trading.  
+- 🔗 **Cointegration-based pre-selection** (Engle–Granger/Johansen) to ensure long-term equilibrium relationships.  
+- 📉 **Multi-test validation** of spread mean reversion: ADF, KPSS, and Hurst exponent (H < 0.5).  
+- 🧠 **Backtest-ready** structure designed for statistical arbitrage workflows and live deployment.  
 
+---
 
+## 📚 References
+
+- Engle, R. F., & Granger, C. W. J. (1987). *Cointegration and Error Correction: Representation, Estimation, and Testing*.  
+- Johansen, S. (1991). *Estimation and Hypothesis Testing of Cointegration Vectors in Gaussian Vector Autoregressive Models*.  
+- Kalman, R. E. (1960). *A New Approach to Linear Filtering and Prediction Problems*.  
