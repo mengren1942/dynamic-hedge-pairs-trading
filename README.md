@@ -21,9 +21,10 @@ Designed for **statistical arbitrage** and **mean reversion** in equities 📊.
 ├── ✅ Step 3: Keep Pairs Passing Stationarity Test on Static Spread
 │       ↳ Reduce universe to plausible relationships
 │
-├── 📏 Step 4: Apply Kalman Filter to Estimate βₜ (Dynamic Hedge Ratio)
+├── 📏 Step 4: Apply Kalman Filter to Estimate αₜ (intercept) and βₜ (Dynamic Hedge Ratio)
 │       ↳ Model: P₁,ₜ = αₜ + βₜ · P₂,ₜ + εₜ
-
+│       When using a state-space model such as the Kalman filter, both αₜ and βₜ are treated as
+│       latent states that can evolve over time.
 │
 ├── 📉 Step 5: Test Kalman Filter Residuals εₜ for Stationarity
 │       ├── 📊 ADF test
