@@ -21,7 +21,7 @@ Designed for **statistical arbitrage** and **mean reversion** in equities 📊.
 │       ↳ Reduce universe to plausible relationships
 │
 ├── 📏 Step 4: Apply Kalman Filter to Estimate βₜ (Dynamic Hedge Ratio)
-│       ↳ Model: P1ₜ = αₜ + βₜ · P2ₜ + εₜ
+│       ↳ Model: \( P_{1,t} = \alpha_t + \beta_t \cdot P_{2,t} + \varepsilon_t \)
 │
 ├── 📉 Step 5: Test Kalman Filter Residuals εₜ for Stationarity
 │       ├── 📊 ADF test
