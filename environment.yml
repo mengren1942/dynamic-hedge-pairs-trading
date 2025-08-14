@@ -1,0 +1,19 @@
+name: finance
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - scikit-learn
+  - scipy
+  - yfinance
+  - beautifulsoup4
+  - ipykernel
+  - jupyter
+  - alpha_vantage
+  - matplotlib
+  - seaborn
+  - plotly
+  - dash
+  - pandas-datareader
