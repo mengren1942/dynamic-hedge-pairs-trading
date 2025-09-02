@@ -64,6 +64,7 @@ In Jupyter, enable auto-reload during development:
 %load_ext autoreload
 %autoreload 2
 ~~~
+---
 
 ## 📐 Expected data format
 
@@ -78,6 +79,7 @@ Example:
 ~~~
 df_prices.index.names = ['ticker', 'datetime']
 ~~~
+---
 
 ## 🚀 Quickstart (end-to-end)
 ~~~
@@ -96,14 +98,14 @@ from pairs import (
 )
 ~~~
 
-### Assume df_prices is your long-form (ticker, datetime) DataFrame with a 'close' column
+##### Assume df_prices is your long-form (ticker, datetime) DataFrame with a 'close' column
 ```python
 cut = "2022-12-31"
 df_train = df_prices.loc[pd.IndexSlice[:, :cut], :]
 df_test  = df_prices.loc[pd.IndexSlice[:, cut:], :]
 ```
 
-#### 1) Cointegration screening on train
+##### 1) Cointegration screening on train
 ```python
 screen = find_cointegrated_pairs_dualgate(df_train, alpha_eg=0.05, alpha_joh=0.05, only_pass=True)
 candidates = list(screen.index)  # list of (ticker1, ticker2)
