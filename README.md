@@ -180,11 +180,12 @@ fig, axes = plot_pair_legs_with_trades(
     label1=t1, label2=t2, normalize=True
 )
 ```
+---
 
 ## 🧱 Top-level API (lazy-loaded)
 
 You can import directly from pairs:
-
+~~~
 Stats
 
 find_cointegrated_pairs_executor
@@ -215,8 +216,10 @@ evaluate_pair_signals
 Plotting
 
 plot_single_price_with_shading, plot_pair_legs_with_trades
+~~~
 
 ## 📝 Notes & gotchas
+~~~
 
 Index hygiene: Keep index names as ('ticker','datetime') and ensure the data are sorted.
 
@@ -229,6 +232,7 @@ EM on train only: Do not EM-fit on OOS; freeze F,Q,R from training.
 Execution lag: exec_lag=1 in signals emulates next-bar execution (backtest-safe).
 
 Costs: evaluate_pair_signals supports basis-point costs, per-share fees, and borrow costs.
+~~~
 
 ## 📚 References
 
