@@ -235,25 +235,18 @@ Import directly from `pairs` (lazy imports keep startup fast):
 
 
 ## 📝 Notes & gotchas
-~~~
 
-Index hygiene: Keep index names as ('ticker','datetime') and ensure the data are sorted.
+- **Index hygiene:** Keep index names as `('ticker','datetime')` and ensure the data are sorted.
+- **No look-ahead:** When computing hedged Sharpe internally, the hedge ratio `beta` is lagged by one bar.
+- **`shapre` column:** The name is intentional. By default it uses the Sharpe of the spread changes; if you pass `prices=...` to `summarize_spread_stationarity_joblib(...)`, it will compute hedged-return Sharpe when possible.
+- **EM on train only:** Do not EM-fit on OOS; freeze `F, Q, R` from training.
+- **Execution lag:** `exec_lag=1` in signals emulates next-bar execution (backtest-safe).
+- **Costs:** `evaluate_pair_signals(...)` supports basis-point costs, per-share fees, and borrow costs.
+---
 
-No look-ahead: When computing hedged Sharpe internally, the hedge ratio beta is lagged by one bar.
-
-shapre column: The name is intentional. By default it uses the Sharpe of the spread changes; if you pass prices=... to summarize_spread_stationarity_joblib, it will compute hedged-return Sharpe when possible.
-
-EM on train only: Do not EM-fit on OOS; freeze F,Q,R from training.
-
-Execution lag: exec_lag=1 in signals emulates next-bar execution (backtest-safe).
-
-Costs: evaluate_pair_signals supports basis-point costs, per-share fees, and borrow costs.
-~~~
 
 ## 📚 References
 
-Engle & Granger (1987) — Cointegration and error-correction
-
-Johansen (1991) — VECM/Johansen cointegration
-
-Kalman (1960) — Linear filtering and prediction
+- Engle, R. F., & Granger, C. W. J. (1987). *Cointegration and Error Correction: Representation, Estimation, and Testing*.  
+- Johansen, S. (1991). *Estimation and Hypothesis Testing of Cointegration Vectors in Gaussian Vector Autoregressive Models*.  
+- Kalman, R. E. (1960). *A New Approach to Linear Filtering and Prediction Problems*.  
