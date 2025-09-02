@@ -12,7 +12,6 @@ A **pairs trading** toolkit built as a Python package, featuring:
 Designed for research backtests and production-style workflows.
 
 ---
-
 ## 📦 Package layout
 ~~~text
 repo-root/
@@ -33,24 +32,27 @@ repo-root/
 │ └─ pair_trades.py # plot_pair_legs_with_trades()
 └─ notebooks/ # research notebooks
 ~~~
-
-
 ---
 
 ## 🧰 Installation
 
 **1) Create the Conda env (recommended):**
+~~~
 ```bash
 conda env create -f environment.yml
 conda activate pairs-trading
+~~~
 
 **2) Install the package (editable for development):**
+~~~
 pip install -e .
+~~~
 
 In Jupyter, enable auto-reload during development:
-
+~~~
 %load_ext autoreload
 %autoreload 2
+~~~
 
 ## 📐 Expected data format
 
