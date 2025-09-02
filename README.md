@@ -17,20 +17,31 @@ Designed for research backtests and production-style workflows.
 repo-root/
 ├─ environment.yml
 ├─ README.md
+│
 ├─ pairs/
 │ ├─ init.py
-│ ├─ market_data/ # load_prices(), etc. (your data adapters)
+│ ├─ market_data/            # load_prices(), etc. (your data adapters)
+│ │ ├─ openbb_history.py
+│ │ ├─ polygon_lake.py
+│ │
+│ ├─ universes/             # contains ticker files
+│ │
 │ ├─ stats/
-│ │ ├─ cointegration.py # find_cointegrated_pairs_*()
-│ │ └─ stationarity.py # ADF/KPSS, half-life, summary + 'shapre'
+│ │ ├─ cointegration.py     # find_cointegrated_pairs_*()
+│ │ ├─ transforms.py
+│ │ └─ stationarity.py      # ADF/KPSS, half-life, summary + 'shapre'
+│ │
 │ ├─ models/
-│ │ └─ kalman.py # fit_kalman_hedge(), continue/filter on OOS
+│ │ └─ kalman.py            # fit_kalman_hedge(), continue/filter on OOS
+│ │
 │ ├─ strategies/
-│ │ ├─ signals.py # z-scores, generate_pair_signals()
-│ │ └─ evaluate.py # evaluate_pair_signals()
+│ │ ├─ signals.py           # z-scores, generate_pair_signals()
+│ │ └─ evaluate.py          # evaluate_pair_signals()
+│ │
 │ └─ plotting/
-│ └─ pair_trades.py # plot_pair_legs_with_trades()
-└─ notebooks/ # research notebooks
+│ └─ pair_trades.py         # plot_pair_legs_with_trades()
+│ │
+└─ notebooks/               # research notebooks
 ~~~
 ---
 
