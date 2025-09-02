@@ -80,7 +80,7 @@ df_prices.index.names = ['ticker', 'datetime']
 ~~~
 
 ## 🚀 Quickstart (end-to-end)
-
+~~~
 import pandas as pd
 from pairs import (
     # screening
@@ -94,69 +94,90 @@ from pairs import (
     # plotting
     plot_pair_legs_with_trades,
 )
+~~~
 
-# Assume df_prices is your long-form (ticker, datetime) DataFrame with a 'close' column
+### Assume df_prices is your long-form (ticker, datetime) DataFrame with a 'close' column
+```python
 cut = "2022-12-31"
 df_train = df_prices.loc[pd.IndexSlice[:, :cut], :]
 df_test  = df_prices.loc[pd.IndexSlice[:, cut:], :]
+```
 
-# 1) Cointegration screening on train
+#### 1) Cointegration screening on train
+```python
 screen = find_cointegrated_pairs_dualgate(df_train, alpha_eg=0.05, alpha_joh=0.05, only_pass=True)
 candidates = list(screen.index)  # list of (ticker1, ticker2)
+```
 
-# 2) Fit Kalman on train (states + frozen params for OOS)
+#### 2) Fit Kalman on train (states + frozen params for OOS)
+```python
 states_tr, params_tr = fit_kalman_hedge(
     df_train, pairs=candidates,
     mode="filter", em_iters=5, q=1e-5, r=1.0,
     return_params=True
 )
+```
 
-# 3) Stationarity summary (+ half-life, sigma, 'shapre')
+#### 3) Stationarity summary (+ half-life, sigma, 'shapre')
+```python
 summary_tr = summarize_spread_stationarity_joblib(
     states_tr,
     alpha=0.05, regression="c",
     prices=df_train,   # enables hedged-return 'shapre' when possible
 )
+```
 
-# 4) Pick a pair (by composite score or by eye)
+#### 4) Pick a pair (by composite score or by eye)
+```python
 pair = summary_tr.sort_values(['verdict','adf_p']).index[0]
 t1, t2 = pair
+```
 
-# 5) Continue Kalman on OOS
+#### 5) Continue Kalman on OOS
+```python
 frozen = {"F": params_tr[pair]["F"], "Q": params_tr[pair]["Q"], "R": params_tr[pair]["R"]}
 last_state = (params_tr[pair]["last_state_mean"], params_tr[pair]["last_state_cov"])
 P1_new = df_test.loc[(t1,), "close"]
 P2_new = df_test.loc[(t2,), "close"]
 states_te, _ = filter_kf_on_new(P1_new, P2_new, frozen=frozen, last_state=last_state, mode="filter")
+```
 
-# 6) Build pair frame for signals
+#### 6) Build pair frame for signals
+```python
 prices_wide = df_test.pivot_table(
     index=df_test.index.get_level_values("datetime"),
     columns=df_test.index.get_level_values("ticker"),
     values="close"
 )
 df_pair = states_te.join(prices_wide[[t1, t2]].rename(columns={t1:"P1", t2:"P2"}), how="inner")
+```
 
-# 7) Generate signals
+#### 7) Generate signals
+```python
 signals = generate_pair_signals(
     df_pair,
     z_method="rolling", z_entry=2.0, z_exit=0.5, z_stop=4.0,
     capital_per_pair=10_000.0, exec_lag=1
 )
+```
 
-# 8) Evaluate with costs
+#### 8) Evaluate with costs
+```python
 daily, trades, summary = evaluate_pair_signals(
     df_pair, signals,
     cost_bps=1.0, borrow_bps_per_year=50.0,
 )
 print(summary)
+```
 
-# 9) Plot trades over each leg
+#### 9) Plot trades over each leg
+```python
 fig, axes = plot_pair_legs_with_trades(
     df_pair[["P1","P2"]],
     signals,
     label1=t1, label2=t2, normalize=True
 )
+```
 
 ## 🧱 Top-level API (lazy-loaded)
 
