@@ -55,9 +55,9 @@ conda activate pairs-trading
 ```
 
 **2) Install the package (editable for development):**
-~~~
+```bash
 pip install -e .
-~~~
+```
 
 In Jupyter, enable auto-reload during development:
 ~~~
@@ -76,7 +76,9 @@ Columns: must include 'close'
 Sorted by: ('ticker', 'datetime')
 
 Example:
+~~~
 df_prices.index.names = ['ticker', 'datetime']
+~~~
 
 ## 🚀 Quickstart (end-to-end)
 
