@@ -14,7 +14,7 @@ Designed for research backtests and production-style workflows.
 ---
 
 ## 📦 Package layout
-
+~~~text
 repo-root/
 ├─ environment.yml
 ├─ README.md
@@ -32,6 +32,7 @@ repo-root/
 │ └─ plotting/
 │ └─ pair_trades.py # plot_pair_legs_with_trades()
 └─ notebooks/ # research notebooks
+~~~
 
 
 ---
