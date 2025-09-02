@@ -68,17 +68,27 @@ In Jupyter, enable auto-reload during development:
 
 ## 📐 Expected data format
 
-Most functions expect a long-form DataFrame:
-~~~
-Index: MultiIndex with levels ('ticker', 'datetime')
-Columns: must include 'close'
-Sorted by: ('ticker', 'datetime')
-~~~
+Most functions expect a **long-form** price table.
 
-Example:
-~~~
-df_prices.index.names = ['ticker', 'datetime']
-~~~
+- **Index:** `MultiIndex` with levels `('ticker', 'datetime')`  
+- **Columns:** must include `'close'`  
+- **Sorting:** sorted by `('ticker', 'datetime')`
+
+**Example:**
+```python
+# Ensure correct index names and sorting
+df_prices.index.names = ["ticker", "datetime"]
+df_prices = df_prices.sort_index(level=["ticker", "datetime"])
+```
+
+```python
+prices_wide = df_prices.pivot_table(
+    index=df_prices.index.get_level_values("datetime"),
+    columns=df_prices.index.get_level_values("ticker"),
+    values="close",
+    aggfunc="last"  # or "mean"/"first" depending on your data
+)
+```
 ---
 
 ## 🚀 Quickstart (end-to-end)
