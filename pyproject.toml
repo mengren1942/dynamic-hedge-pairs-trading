@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pairs-trading"                # distribution name (what pip installs)
+version = "0.1.0"
+description = "Dynamic-hedge pairs trading toolkit"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{name = "Mengren Man"}]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+]
+
+[project.optional-dependencies]
+notebooks = [
+  "jupyterlab",
+  "matplotlib>=3.7",
+  "tqdm>=4.66",
+  # OpenBB is optional, used only if you call openbb loader:
+  "openbb>=4 ; python_version >= '3.9'",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pairs*"]
+
+# include your packaged ticker lists
+[tool.setuptools.package-data]
+pairs = ["universes/tickers/*"]
