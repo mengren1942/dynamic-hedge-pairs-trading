@@ -184,39 +184,45 @@ fig, axes = plot_pair_legs_with_trades(
 
 ## 🧱 Top-level API (lazy-loaded)
 
-You can import directly from pairs:
-~~~
-Stats
+Import directly from `pairs` (lazy imports keep startup fast):
 
-find_cointegrated_pairs_executor
+### 📊 Stats
+- `find_cointegrated_pairs_executor(...)`
+- `find_cointegrated_pairs_dualgate(...)`
+- `estimate_halflife(series: pd.Series) -> float`
+- `test_spread_stationarity(series: pd.Series, alpha=0.05, regression="c") -> dict`
+- `summarize_spread_stationarity_joblib(states: Dict[Tuple[str,str], DataFrame], ...) -> DataFrame`  
+  Returns columns:
+  `["adf_stat","adf_p","kpss_stat","kpss_p","halflife","resid_sigma","shapre","verdict"]`
 
-find_cointegrated_pairs_dualgate
+### 🧮 Models (optional; exposed if `pairs.models.kalman` is present)
+- `fit_kalman_hedge(data, pairs=..., mode="filter", ..., return_params=True)`  
+  → `(states_dict, params_dict)`
+- `filter_kf_on_new(P1_new, P2_new, frozen=..., last_state=..., mode="filter")`  
+  Continue on new data using frozen `F,Q,R` and a last filtered state.
+- `continue_kalman_on_window(...)`, `continue_kalman_for_pairs_joblib(...)`
 
-estimate_halflife
+### 🎯 Strategies
+- `estimate_halflife_window(spread: pd.Series, ...) -> int`
+- `zscore_from_spread(spread: pd.Series, method="rolling"|"ewm"|"robust", ...) -> pd.Series`
+- `generate_pair_signals(df_pair, z_entry=2.0, z_exit=0.5, z_stop=4.0, ...) -> DataFrame`
+- `evaluate_pair_signals(df_pair, signals, cost_bps=..., ...) -> (daily, trades, summary)`
 
-test_spread_stationarity
+### 🖼️ Plotting
+- `plot_single_price_with_shading(...)`
+- `plot_pair_legs_with_trades(df_pair, signals, ...) -> (Figure, (Axes, Axes))`
 
-summarize_spread_stationarity_joblib
-Returns columns: ["adf_stat","adf_p","kpss_stat","kpss_p","halflife","resid_sigma","shapre","verdict"]
+> Example:
+> ```python
+> from pairs import (
+>     find_cointegrated_pairs_dualgate, fit_kalman_hedge,
+>     summarize_spread_stationarity_joblib, generate_pair_signals,
+>     evaluate_pair_signals, plot_pair_legs_with_trades,
+> )
+> ```
+---
 
-Models
 
-fit_kalman_hedge → (states_dict, params_dict)
-
-filter_kf_on_new → continue on new data using frozen F,Q,R and a last state
-
-continue_kalman_on_window, continue_kalman_for_pairs_joblib (if included in your models/kalman.py)
-
-Strategies
-
-estimate_halflife_window, zscore_from_spread, generate_pair_signals
-
-evaluate_pair_signals
-
-Plotting
-
-plot_single_price_with_shading, plot_pair_legs_with_trades
-~~~
 
 ## 📝 Notes & gotchas
 ~~~
