@@ -39,8 +39,8 @@ repo-root/
 │ │ ├─ signals.py           # z-scores, generate_pair_signals()
 │ │ └─ evaluate.py          # evaluate_pair_signals()
 │ │
-│ └─ plotting/
-│ │ └─ pair_trades.py         # plot_pair_legs_with_trades()
+│ ├─ plotting/
+│ │ └─ pair_trades.py       # plot_pair_legs_with_trades()
 │ 
 └─ notebooks/               # research notebooks
 ~~~
