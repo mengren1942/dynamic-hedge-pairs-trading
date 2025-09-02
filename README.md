@@ -40,7 +40,7 @@ repo-root/
 │ │ └─ evaluate.py          # evaluate_pair_signals()
 │ │
 │ └─ plotting/
-│ └─ pair_trades.py         # plot_pair_legs_with_trades()
+│ │ └─ pair_trades.py         # plot_pair_legs_with_trades()
 │ 
 └─ notebooks/               # research notebooks
 ~~~
