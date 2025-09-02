@@ -68,12 +68,11 @@ In Jupyter, enable auto-reload during development:
 ## 📐 Expected data format
 
 Most functions expect a long-form DataFrame:
-
+~~~
 Index: MultiIndex with levels ('ticker', 'datetime')
-
 Columns: must include 'close'
-
 Sorted by: ('ticker', 'datetime')
+~~~
 
 Example:
 ~~~
