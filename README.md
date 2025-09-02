@@ -15,12 +15,13 @@ Designed for research backtests and production-style workflows.
 ## 📦 Package layout
 ~~~text
 repo-root/
+│
 ├─ environment.yml
 ├─ README.md
 │
 ├─ pairs/
 │ ├─ init.py
-│ ├─ market_data/            # load_prices(), etc. (your data adapters)
+│ ├─ market_data/           # load_prices(), etc. (your data adapters)
 │ │ ├─ openbb_history.py
 │ │ ├─ polygon_lake.py
 │ │
