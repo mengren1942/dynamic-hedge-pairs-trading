@@ -50,10 +50,8 @@ repo-root/
 
 **1) Create the Conda env (recommended):**
 ```bash
-~~~
 conda env create -f environment.yml
 conda activate pairs-trading
-~~~
 
 **2) Install the package (editable for development):**
 ~~~
