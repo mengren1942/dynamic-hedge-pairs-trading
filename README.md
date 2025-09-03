@@ -23,7 +23,7 @@ repo-root/
 │ ├─ init.py
 │ ├─ market_data/           # load_prices(), etc. (your data adapters)
 │ │ ├─ openbb_history.py
-│ │ ├─ polygon_lake.py
+│ │ └─ polygon_lake.py
 │ │
 │ ├─ universes/             # contains ticker files
 │ │
@@ -39,8 +39,8 @@ repo-root/
 │ │ ├─ signals.py           # z-scores, generate_pair_signals()
 │ │ └─ evaluate.py          # evaluate_pair_signals()
 │ │
-│ ├─ plotting/
-│ │ └─ pair_trades.py       # plot_pair_legs_with_trades()
+│ └─ plotting/
+│   └─ pair_trades.py       # plot_pair_legs_with_trades()
 │ 
 └─ notebooks/               # research notebooks
 ~~~
