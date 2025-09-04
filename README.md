@@ -17,6 +17,17 @@ Designed for research backtests and production-style workflows.
   <img src="figures/backtest.png" alt="Right figure" height="300">
 </p>
 
+<table>
+  <tr>
+    <img src="figures/signals.png" alt="Left figure" height="300">
+    &nbsp;&nbsp;  <!-- small gap -->
+    <img src="figures/backtest.png" alt="Right figure" height="300">
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><em> Backtest on out-of-sample data.</em></td>
+  </tr>
+</table>
+
 ---
 ## 📦 Package layout
 ~~~text
