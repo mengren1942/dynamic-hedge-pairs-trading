@@ -18,6 +18,7 @@ The figure and table below show a backtest on out-of-sample data.
     &nbsp;&nbsp;  <!-- small gap -->
     <img src="figures/backtest.png" alt="Right figure" height="290">
 </p>
+<p align="center"><em>Backtest on out-of-sample data.</em></p>
 
 ---
 ## 📦 Package layout
