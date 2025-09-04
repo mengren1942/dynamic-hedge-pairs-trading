@@ -11,16 +11,11 @@ A **pairs trading** toolkit built as a Python package, featuring:
 
 Designed for research backtests and production-style workflows.
 
-<table>
-  <tr>
+<p align="center">
     <img src="figures/signals.png" alt="Left figure" height="250">
     &nbsp;&nbsp;  <!-- small gap -->
     <img src="figures/backtest.png" alt="Right figure" height="250">
-  </tr>
-  <tr>
-    <td colspan="2" align="center"><em> Backtest on out-of-sample data.</em></td>
-  </tr>
-</table>
+</p>
 
 ---
 ## 📦 Package layout
