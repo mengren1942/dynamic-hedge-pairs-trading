@@ -11,6 +11,8 @@ A **pairs trading** toolkit built as a Python package, featuring:
 
 Designed for research backtests and production-style workflows.
 
+The figure and table below show a backtest on out-of-sample data.
+
 <p align="center">
     <img src="figures/signals.png" alt="Left figure" height="290">
     &nbsp;&nbsp;  <!-- small gap -->
