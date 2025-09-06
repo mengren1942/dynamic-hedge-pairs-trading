@@ -16,7 +16,6 @@ Designed for research backtests and production-style workflows.
     &nbsp;&nbsp;  <!-- small gap -->
     <img src="figures/backtest.png" alt="Right figure" height="290">
 </p>
-#<p align="center"><em>Backtest on out-of-sample data.</em>
     <p align="center"><em>Backtest on out-of-sample data. See the <a href="notebooks/pairs_trading_01.ipynb">notebook</a>.</em>
 </p>
 
